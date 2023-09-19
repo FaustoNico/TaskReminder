@@ -5,6 +5,8 @@ import { db } from '../config/db';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Check from '../components/checkbox';
+import CheckBoxUnchecked from '../components/checkbox-unchecked';
 
 function ScreenHome() {
 
@@ -16,7 +18,7 @@ function ScreenHome() {
     setShow(true);
   }
   const handleClose = () => {
-    setSelectedTarea(null) 
+    setSelectedTarea(null)
     setShow(false);
   }
   const [selectedTarea, setSelectedTarea] = useState(null); // Nuevo estado para rastrear la tarea seleccionada
@@ -45,7 +47,18 @@ function ScreenHome() {
     await deleteDoc(docId)
   }
 
-  console.log(tareas)
+  const handleTerminar = async (id) => {
+    const docId = doc(db, "Tareas", id)
+    try {
+      await updateDoc(docId, {
+        terminada: 1
+      });
+    } catch (e) {
+      console.error(e)
+    }
+
+  }
+
   return (
     <>
 
@@ -60,12 +73,13 @@ function ScreenHome() {
             <div key={tarea.id} className='tarea'>
 
               <div onClick={() => handleShow(tarea)}>
+                {tarea.terminada ? <Check></Check> : <CheckBoxUnchecked></CheckBoxUnchecked>}
                 {tarea.nombre}
               </div>
               <Modal show={show && selectedTarea === tarea} onHide={handleClose}>
                 <Modal.Header closeButton>
                   <Modal.Title>
-                    {tarea.nombre}  
+                    {tarea.nombre}
                   </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>{tarea.nombre}</Modal.Body>
@@ -76,6 +90,9 @@ function ScreenHome() {
                   </Button>
                   <Button variant="primary" onClick={handleClose}>
                     Guardar Cambios
+                  </Button>
+                  <Button variant="primary" onClick={(id) => handleTerminar(tarea.id)}>
+                    {tarea.terminada ? "Terminada" : "Terminar Tarea"}
                   </Button>
                 </Modal.Footer>
               </Modal>

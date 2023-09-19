@@ -14,7 +14,8 @@ function ScreenTarea() {
             try {
               const nuevaTarea = {
                 // id: 2,
-                nombre: nombreTarea 
+                nombre: nombreTarea, 
+                terminada: 0 
               }
               const docRef= await addDoc(collection(db,"Tareas"), nuevaTarea)
               await updateDoc(docRef, {id:docRef.id})
