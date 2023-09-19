@@ -14,7 +14,7 @@ const LogoutButton = () => {
 
     return (
         <Button variant="danger" onClick={() => cerrarSesion()}>
-            Log Out
+            Cerrar sesión
         </Button>
 
     )
