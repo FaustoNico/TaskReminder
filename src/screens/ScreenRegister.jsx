@@ -55,7 +55,7 @@ export default function Register() {
             type="email"
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             className="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="youremail@company.tld"
+            placeholder="example@gmail.com"
           />
         </div>
 
