@@ -9,7 +9,7 @@ const LogoutButton = () => {
     const cerrarSesion = async () => {
         await logout();
         console.log("hola")
-        navigate("/ScreenLogin")
+        navigate("/login")
     };
 
     return (

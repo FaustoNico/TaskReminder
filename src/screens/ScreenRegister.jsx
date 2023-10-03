@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Cookies from "universal-cookie";
 //import { Alert } from "./Alert";
+
 export default function Register() {
   const { signup, loginWithGoogle } = useAuth();
 
@@ -9,7 +11,14 @@ export default function Register() {
     email: "",
     password: "",
   });
-
+  const cookies = new Cookies();
+  const getCookies = cookies.get('token');
+  
+  useEffect(() => {
+    if (getCookies == "nombre xd") {
+      navigate("/home")
+    }
+  })
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -88,7 +97,7 @@ export default function Register() {
       </form>
       <p className="my-4 text-sm flex justify-between px-3">
         Ya tienes una cuenta? <br />
-        <Link to="/ScreenLogin" className="text-blue-700 hover:text-blue-900">
+        <Link to="/login" className="text-blue-700 hover:text-blue-900">
           Ingresar
         </Link>
       </p>

@@ -7,9 +7,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Check from '../components/checkbox';
 import CheckBoxUnchecked from '../components/checkbox-unchecked';
+import Cookies from 'universal-cookie';
 
 function ScreenHome() {
-
+  const cookies = new Cookies();
+  const getCookies = cookies.get('token');
   const navigate = useNavigate();
   const [tareas, setTareas] = useState([]);
   const [show, setShow] = useState(false);
@@ -24,6 +26,9 @@ function ScreenHome() {
   const [selectedTarea, setSelectedTarea] = useState(null); // Nuevo estado para rastrear la tarea seleccionada
 
   useEffect(() => {
+    if (!getCookies) {
+      navigate("/login")
+    }
     const unsub = onSnapshot(collection(db, 'Tareas'), (foto) => {
       try {
         const tareas = []

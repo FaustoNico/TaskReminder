@@ -1,9 +1,18 @@
-import { useState, } from "react";
+import { useEffect, useState, } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Cookies from "universal-cookie";
 //import { Alert } from "./Alert";
 
 export default function Login() {
+  const cookies = new Cookies();
+  const getCookies = cookies.get('token');
+  
+  useEffect(() => {
+    if (getCookies == "nombre xd") {
+      navigate("/home")
+    }
+  })
   const [user, setUser] = useState({
     email: "",
     password: "",

@@ -8,6 +8,8 @@ import { createUserWithEmailAndPassword,
     signInWithRedirect
 } from 'firebase/auth';
 import { auth } from "../config/db";
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 const authContext = createContext();
 //Usar el context//
 export const useAuth = () => {
@@ -22,24 +24,33 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [errorType, setErrorType] = useState('');
 
-    const signup = (email, password) =>
+    const signup = (email, password) =>{
         createUserWithEmailAndPassword(auth, email, password);
+        cookies.set('token', 'nombre xd', {path: "/"})
+    }
 
-    const login = (email, password) =>
+    const login = (email, password) =>{ 
         signInWithEmailAndPassword(auth, email, password);
+        cookies.set('token', 'nombre xd', {path: "/"})
+    }
 
-    const logout = () => 
+    const logout = () => {
         signOut(auth);
+        cookies.remove('token');
         console.log("se cerro")
+    }
 
     const loginWithGoogle = () => {
         const provider = new GoogleAuthProvider();
         console.log(provider);
         // return signInWithRedirect(auth, provider);
-        return signInWithPopup(auth, provider)
+        cookies.set('token', 'nombre xd', {path: "/"})
+        return signInWithPopup(auth, provider);
     }
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        console.log(token)
         const unsub = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);//setea valores del usuario
             setLoading(false);//setea en falso el loading
