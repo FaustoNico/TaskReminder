@@ -33,12 +33,12 @@ function ScreenTarea() {
         setNombreTarea(e.target.value)
     }
     return (
-        <div>
-            añadir tarea
-                <input type="text" placeholder='Crear nueva tarea'
+        <div className='añadir-tarea'>
+            Crear tarea<br /> <br />
+                <input className='input-tarea' type="text" placeholder='Crear nueva tarea'
                     onChange={handleInput}
-                />
-                <button type='button' onClick={handleSubmit}>Añadir</button>
+                /> 
+                <button className='boton-crear-tarea' type='button' onClick={handleSubmit}>Crear</button>
             
         </div>
     )

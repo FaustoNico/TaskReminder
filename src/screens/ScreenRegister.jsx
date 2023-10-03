@@ -37,7 +37,7 @@ export default function Register() {
   return (
     <>
 <br /><br /><br /><br /><br /><br /><br />
-    <div className="w-full max-w-xs m-auto text-black">
+    <div className="screenregister">
 
       <form
         onSubmit={handleSubmit}
@@ -64,32 +64,32 @@ export default function Register() {
             htmlFor="password"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            Password
+            Contraseña
           </label>
           <br />
           <input
             type="password"
             onChange={(e) => setUser({ ...user, password: e.target.value })}
             className="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="*****"
+            placeholder="****************"
           />
         </div>
 
         <button className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Register
+          Registrar
         </button>
         <button
-        onClick={handleGoogleSignin}
+        onClick={handleSubmit}
         style={ {margin: 25} }
         className="bg-slate-50 hover:bg-slate-200 text-black  shadow rounded border-2 border-gray-300 py-2 px-4 w-full"
       >
-        Google login
+        Google Login
       </button>
       </form>
       <p className="my-4 text-sm flex justify-between px-3">
-        Already have an Account?
+        Ya tienes una cuenta? <br />
         <Link to="/ScreenLogin" className="text-blue-700 hover:text-blue-900">
-          Login
+          Ingresar
         </Link>
       </p>
     </div>

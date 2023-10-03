@@ -70,3 +70,20 @@
   text-align: left;
   padding-left: 10px;
 }
+
+.screenregister{
+  text-align: center;
+}
+
+.añadir-tarea{
+  text-align: center;
+  padding-top: 30px;
+}
+
+.input-tarea{
+  border-radius: 14px;
+}
+
+.boton-crear-tarea{
+  border-radius: 14px;
+}
