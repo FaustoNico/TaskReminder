@@ -87,3 +87,8 @@
 .boton-crear-tarea{
   border-radius: 14px;
 }
+
+.login-form{
+  text-align: center;
+  padding-top: 5%;
+}

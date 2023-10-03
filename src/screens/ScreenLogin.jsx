@@ -9,7 +9,7 @@ export default function Login() {
   const getCookies = cookies.get('token');
   
   useEffect(() => {
-    if (getCookies == "nombre xd") {
+    if (getCookies === "nombre xd") {
       navigate("/home")
     }
   })
@@ -57,7 +57,7 @@ export default function Login() {
 
   return (
       <>
-    <div className="w-full max-w-xs m-auto">
+    <div className="login-form">
       {/* {error && <Alert message={error} />} */}
 
       <form
@@ -78,7 +78,7 @@ export default function Login() {
             id="email"
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="youremail@company.tld"
+            placeholder="example@gmail.com"
           />
         </div>
         <div className="mb-4">
@@ -86,7 +86,7 @@ export default function Login() {
             htmlFor="password"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            Password
+            Contraseña
           </label>
           <br />
           <input
@@ -95,7 +95,7 @@ export default function Login() {
             id="password"
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="*****"
+            placeholder="*****************"
           />
         </div>
 
@@ -105,14 +105,14 @@ export default function Login() {
             type="submit"
             style={ {margin: 20} }
           >
-            Sign In
+            Ingresar
           </button>
           <a
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
             href="#!"
             onClick={handleResetPassword}
           >
-            Forgot Password?
+            Has olvidado tu contraseña?
           </a>
         </div>
       </form>
@@ -125,9 +125,9 @@ export default function Login() {
       </button>
       </div>
       <p className="my-4 text-sm flex justify-between px-3">
-        Don't have an account?
+        No tienes una cuenta?
         <Link to="/" className="text-blue-700 hover:text-blue-900">
-          Register
+          Cree una
         </Link>
       </p>
     </div>
