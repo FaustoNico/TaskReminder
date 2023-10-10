@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [errorType, setErrorType] = useState('');
-
+//RECORDATORIO!!! validar existencia de correo
     const signup = (email, password) =>{
         createUserWithEmailAndPassword(auth, email, password);
         cookies.set('token', 'nombre xd', {path: "/"})
