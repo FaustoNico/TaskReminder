@@ -7,64 +7,75 @@ import Cookies from "universal-cookie";
 export default function Login() {
   const cookies = new Cookies();
   const getCookies = cookies.get('token');
+  const { login, loginWithGoogle, resetPassword, getError, errorType,user } = useAuth();
+  const navigate = useNavigate();
   
+  // useEffect(() => {
+  //   if (getCookies === "nombre xd") {
+  //     navigate("/home")
+  //   }
+  // })
+
   useEffect(() => {
-    if (getCookies === "nombre xd") {
-      navigate("/home")
+    if (user) {
+        navigate('/home')
     }
-  })
-  const [user, setUser] = useState({
+}, [user])
+
+  const [userr, setUser] = useState({
     email: "",
     password: "",
   });
-  const { login, loginWithGoogle, resetPassword } = useAuth();
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+
     try {
-      await login(user.email, user.password);
+      await login(userr.email, userr.password);
       navigate("/home");
     } catch (error) {
-      setError(error.message);
+      getError(error)
+      console.log(errorType)
     }
+    
   };
 
   const handleChange = ({ target: { value, name } }) =>
-    setUser({ ...user, [name]: value });
+    setUser({ ...userr, [name]: value });
 
   const handleGoogleSignin = async () => {
     try {
       await loginWithGoogle();
       navigate("/home");
     } catch (error) {
-      setError(error.message);
+      getError(error)
     }
   };
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
-    if (!user.email) return setError("Write an email to reset password");
+    if (!userr.email) return 
     try {
-      await resetPassword(user.email);
-      setError('We sent you an email. Check your inbox')
+      await resetPassword(userr.email);
     } catch (error) {
-      setError(error.message);
+      getError(error)
     }
   };
 
   return (
       <>
     <div className="login-form">
-      {/* {error && <Alert message={error} />} */}
-
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-      >
+        >
         <div className="mb-4">
+        {errorType &&
+                    <p>
+                        {errorType}
+                    </p>}
           <label
             htmlFor="email"
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -127,7 +138,7 @@ export default function Login() {
       <p className="my-4 text-sm flex justify-between px-3">
         No tienes una cuenta?
         <Link to="/" className="text-blue-700 hover:text-blue-900">
-          Cree una
+          Crear una
         </Link>
       </p>
     </div>

@@ -9,17 +9,17 @@ import Cookies from 'universal-cookie';
 import { useEffect, useState } from 'react';
 
 function App() {
-
+ //Cambiar path="/" de Register a ScreenHome
   return (
     <Router>
-      <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Register />}></Route>
+      <switch>
+        <Routes> 
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Register />}></Route>
           <Route path='/home' element={<ScreenHome />}></Route>
           <Route path='/tarea' element={<ScreenTarea />}></Route>
         </Routes>
-      </AuthProvider>
+      </switch>
     </Router>
   );
 }

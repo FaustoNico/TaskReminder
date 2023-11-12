@@ -5,20 +5,25 @@ import Cookies from "universal-cookie";
 //import { Alert } from "./Alert";
 
 export default function Register() {
-  const { signup, loginWithGoogle } = useAuth();
+  const { signup, loginWithGoogle,user } = useAuth();
 
-  const [user, setUser] = useState({
+  const [userr, setUser] = useState({
     email: "",
     password: "",
   });
   const cookies = new Cookies();
   const getCookies = cookies.get('token');
   
+  // useEffect(() => {
+  //   if (getCookies == "nombre xd") {
+  //     navigate("/home")
+  //   }
+  // })
   useEffect(() => {
-    if (getCookies == "nombre xd") {
-      navigate("/home")
+    if (user) {
+        navigate('/home')
     }
-  })
+}, [user])
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -26,7 +31,7 @@ export default function Register() {
     e.preventDefault();
     setError("");
     try {
-      await signup(user.email, user.password);
+      await signup(userr.email, userr.password);
       navigate("/home");
     } catch (error) {
       setError(error.message);
@@ -35,7 +40,6 @@ export default function Register() {
   const handleGoogleSignin = async () => {
     try {
       await loginWithGoogle();
-      console.log("hola")
       navigate("/home");
     } catch (error) {
       setError(error.message);
@@ -62,7 +66,7 @@ export default function Register() {
           <br />
           <input
             type="email"
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            onChange={(e) => setUser({ ...userr, email: e.target.value })}
             className="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="example@gmail.com"
           />
@@ -78,7 +82,7 @@ export default function Register() {
           <br />
           <input
             type="password"
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            onChange={(e) => setUser({ ...userr, password: e.target.value })}
             className="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="****************"
           />
