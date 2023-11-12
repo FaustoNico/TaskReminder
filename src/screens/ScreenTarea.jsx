@@ -36,9 +36,9 @@ function ScreenTarea() {
     }
 
     return (
-        <div className='añadir-tarea'>
+        <div id="screentarea" className='centrar tamaño'>
             Crear tarea<br /> <br />
-            <input className='input-tarea' type="text" placeholder='Crear nueva tarea'
+            <input className='tarea-placeholder' type="text" placeholder='Crear nueva tarea'
                 onChange={handleInput}
             />
             <button className='boton-crear-tarea' type='button' onClick={handleSubmit}>Crear</button>

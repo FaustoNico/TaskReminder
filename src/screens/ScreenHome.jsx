@@ -104,7 +104,7 @@ function ScreenHome() {
             </div>
           )
         })}
-        <Button variant="primary" onClick={() => { navigate("/tarea") }}>Añadir</Button>
+        <Button className='button-añadir' variant="primary" onClick={() => { navigate("/tarea") }}>Añadir</Button>
         <LogoutButton></LogoutButton>
       </div>
     </>

@@ -15,8 +15,8 @@ function App() {
       <switch>
         <Routes> 
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<Register />}></Route>
           <Route path='/home' element={<ScreenHome />}></Route>
+          <Route path="/" element={<Register />}></Route>
           <Route path='/tarea' element={<ScreenTarea />}></Route>
         </Routes>
       </switch>

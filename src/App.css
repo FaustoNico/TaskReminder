@@ -66,19 +66,17 @@
 }
 
 .tareas{
-  font-size: 30px;
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 15px;
   text-align: left;
-  padding-left: 10px;
+  padding: 15px;
 }
 
 .screenregister{
   text-align: center;
 }
 
-.añadir-tarea{
-  text-align: center;
-  padding-top: 30px;
-}
 
 .input-tarea{
   border-radius: 14px;
@@ -86,9 +84,23 @@
 
 .boton-crear-tarea{
   border-radius: 14px;
+  background-color: lightblue;
 }
 
 .login-form{
   text-align: center;
-  padding-top: 5%;
+  margin-bottom: 15px;
 }
+
+#screentarea{
+  font-weight: 800;
+  text-align: left;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.tarea-placeholder{
+  border-radius: 20px;
+  border-color: white;
+}
+
